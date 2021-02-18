@@ -1,0 +1,131 @@
+@mixin background-image {
+   background-repeat: no-repeat;
+   background-position: bottom 15% right 10%;
+}
+$head-color: hsl(234, 12%, 34%);
+$text-color: hsl(229, 6%, 66%);
+
+
+* {
+   margin: 0;
+   padding: 0;
+   font-family: 'Poppins', sans-serif;
+}
+
+.layout {
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: hsl(0, 0%, 98%);
+}
+.headline {
+   padding-top: 5em;
+   width: 40%;
+}
+.headline h1{
+   font-size: 35px;
+   color: $head-color;
+}
+.headline p, .card p{
+   font-size: 15px;
+   padding-top: 20px;
+   color: $text-color;
+   font-weight: 200;
+}
+.light{
+   font-weight: 200;
+   color: $text-color !important;
+}
+.container {
+   width: 90%;
+   display: flex;
+   flex-direction: column;
+   place-items: center;
+   text-align: center;
+}
+.card_container_grid{
+   padding-top: 3em;
+   display: grid;
+   grid-gap: 2em;
+   grid-template-areas: 
+       ".          team-builder ."
+       ".          team-builder ."
+       "supervisor team-builder calculator"
+       "supervisor team-builder calculator"
+       "supervisor     karma    calculator"
+       "supervisor     karma    calculator"
+       ".              karma    ."
+       ".              karma    ."
+   ;
+}
+#supervisor{
+   grid-area: supervisor;
+   background-image: url(./images/icon-supervisor.svg);
+   @include background-image;
+ }
+ #team-builder{
+   grid-area: team-builder;
+   background-image: url(./images/icon-team-builder.svg);
+   @include background-image;
+ }
+ #calculator{
+   grid-area: calculator;
+   background-image: url(./images/icon-calculator.svg);
+   @include background-image;
+ }
+ #karma{
+   grid-area: karma;
+   background-image: url(./images/icon-karma.svg);
+   @include background-image;
+ }
+.card{
+   width: 300px;
+   height: 200px;
+   text-align: left;
+   padding: 15px;
+   border-radius: 7px;
+   box-shadow: 10px 10px 30px hsl(234, 12%, 34%);
+}
+.card h3{
+   color: $head-color;
+}
+footer{
+   position: absolute;
+   bottom: 0;
+}
+.attribution {
+   font-size: 11px; 
+   text-align: center;
+}
+.attribution a {
+   color: hsl(228, 45%, 44%);
+}
+
+@media (max-width: 375px) {
+   .layout{
+      height: fit-content;
+   }
+   .headline{
+      width: 100%;
+   }
+   .headline h1{
+      font-size: 24px;
+   }
+   .card_container_grid{
+      grid-template-areas: 
+         "supervisor"
+         "team-builder"
+         "karma"
+         "calculator"
+      ;
+   }
+   footer{
+      position: unset;
+      padding-top: 20px;
+   }
+}
+
+// supervisor team-builder calculator"
+// "supervisor     karma    calculator"
